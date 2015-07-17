@@ -1,6 +1,6 @@
-# foreclojure
+# 4clojure solutions
 
-A Clojure library designed to ... well, that part is up to you.
+A Clojure project for solutions to 4clojure problems.
 
 ## Usage
 
