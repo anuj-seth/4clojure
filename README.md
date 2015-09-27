@@ -1,6 +1,7 @@
 # 4clojure solutions
 
 A Clojure project for solutions to 4clojure problems.
+All the solutions are in the test directory in core_test.clj.
 
 ## Usage
 
