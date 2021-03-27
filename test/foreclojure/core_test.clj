@@ -82,6 +82,7 @@
             #{[1 4] [2 4] [3 4] [1 5] [2 5] [3 5]}))
     (is (= 300 (count (cartesian-product (into #{} (range 10))
                                          (into #{} (range 30))))))))
+
 (deftest problem-92-read-roman-numerals                               
   (let [roman->decimal (fn roman->decimal [roman]
                          (let [Symbol->Value {\I 1, 
@@ -718,6 +719,35 @@
 ;; Below this line lie problems not yet solved.
 ;;
 
+(deftest problem-112-sequs-horribilis
+  (let [sequs-horribilis (fn sequs-horribilis
+                           ([n s] (sequs-horribilis n s 0))
+                           ([n [head & tail] current-sum]
+                            (cond
+                              (nil? head) ()
+                              (sequential? head) [(sequs-horribilis n
+                                                                    head
+                                                                    current-sum)]
+                              (> (+ current-sum head) n) ()
+                              :else (cons head
+                                          (sequs-horribilis n
+                                                            tail
+                                                            (+ current-sum head))))))]
+    (is (= (sequs-horribilis 10 [1 2 [3 [4 5] 6] 7])
+           '(1 2 (3 (4)))))
+
+    (is (= (sequs-horribilis 30 [1 2 [3 [4 [5 [6 [7 8]] 9]] 10] 11])
+           '(1 2 (3 (4 (5 (6 (7))))))))
+    (is (= (sequs-horribilis 9 (range))
+           '(0 1 2 3)))
+    (is (= (sequs-horribilis 1 [[[[[1]]]]])
+           '(((((1)))))))
+    (is (= (sequs-horribilis 0 [1 2 [3 [4 5] 6] 7])
+           '()))
+    (is (= (sequs-horribilis 0 [0 0 [0 [0]]])
+           '(0 0 (0 (0)))))
+    (is (= (sequs-horribilis 1 [-10 [1 [2 3 [4 5 [6 7 [8]]]]]])
+           '(-10 (1 (2 3 (4))))))))
 
 (deftest problem-113-making-data-dance
   (let [dance (fn [s] s)]
