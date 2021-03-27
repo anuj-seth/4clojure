@@ -714,11 +714,6 @@
     (is (= (nth (sort (filter #(.contains ^String % "(()()()())") (balanced-parens 9))) 6) "(((()()()())(())))"))
     (is (= (nth (sort (balanced-parens 12)) 5000) "(((((()()()()()))))(()))"))))
 
-
-
-;; Below this line lie problems not yet solved.
-;;
-
 (deftest problem-112-sequs-horribilis
   (let [sequs-horribilis (fn sequs-horribilis
                            ([n s] (sequs-horribilis n s 0))
@@ -748,6 +743,12 @@
            '(0 0 (0 (0)))))
     (is (= (sequs-horribilis 1 [-10 [1 [2 3 [4 5 [6 7 [8]]]]]])
            '(-10 (1 (2 3 (4))))))))
+
+
+
+;; Below this line lie problems not yet solved.
+;;
+
 
 (deftest problem-113-making-data-dance
   (let [dance (fn [s] s)]
